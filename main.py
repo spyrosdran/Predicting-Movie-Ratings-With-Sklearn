@@ -11,6 +11,8 @@ df = df.groupby(['movieId']).filter(lambda x: len(x) >= 5)
 
 # Create the following pivot table --> [3650 filtered movies x 610 filtered users]
 pivot = pd.pivot_table(df, columns="movieId", index="userId", values="rating")
+pearson_corr = pivot.corr("pearson")
+print(pearson_corr)
 
 k = int(input("Please enter the k neighbors: "))
 tr_size = float(input("Please enter the train size (0.1 - 0.9): "))
